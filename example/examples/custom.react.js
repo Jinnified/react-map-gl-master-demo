@@ -76,7 +76,7 @@ const OverlayExample = React.createClass({
   },
 
   componentDidMount(){
-    console.log('this.state.opt', this.state.opt)
+    // console.log('this.state.opt', this.state.opt)
     var canvasMap = document.getElementsByClassName('mapboxgl-canvas')[0];
     var map = MapGL.map;
     var viewport = assign({}, this.state.viewport, this.props);
@@ -84,9 +84,10 @@ const OverlayExample = React.createClass({
     // console.log('locations', this.state.locations);
 
     canvasMap.addEventListener('click', (e) => {
+      // console.log('odswitch', document.getElementById('odswitch').checked);
       let opt = this.state.opt;
       let amount = 0;
-      let isFromTo = true;
+      let isFromTo = document.getElementById('odswitch').checked;
 
       opt.ctx.clearRect(0, 0, opt.width, opt.height);
       // opt.ctx.strokeStyle = alphaify('#1FBAD6', 0.2);

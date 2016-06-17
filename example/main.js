@@ -83,14 +83,37 @@ var App = React.createClass({
 
 const mainContainer = document.createElement('div');
 const reactContainer = document.createElement('div');
+const screenTitle = document.createElement('div');
+
 const switcher = document.createElement('div');
-const switcherDom = '<input type="checkbox" name="my-checkbox" checked />';
+const switcherDom = '<label><input id="odswitch" type="checkbox" name="odcheckbox" checked>终点分析</label>';
+const screenTitleDom = '<h1>出租车OD分析</h1>'
+
+mainContainer.style.position = 'relative';
+mainContainer.style['font-family'] = 'Microsoft YaHei';
+mainContainer.style['font-size'] = '20px';
+mainContainer.style.width = '1920px';
+mainContainer.style.height = '1080px';
+
+screenTitle.innerHTML = screenTitleDom;
+screenTitle.style.position = 'absolute';
+screenTitle.style.top = '20px';
+screenTitle.style.left = '40px';
+screenTitle.style.color = 'white';
 
 switcher.className = 'odswitcher';
 switcher.innerHTML = switcherDom;
+switcher.style.color = 'orange';
+switcher.style.position = 'absolute';
+switcher.style.right = '40px';
+switcher.style.top = '20px';
+switcher.style.cursor = 'pointer';
+
 reactContainer.className = 'odmap';
 
 document.body.appendChild(mainContainer);
-mainContainer.appendChild(reactContainer)
+mainContainer.appendChild(reactContainer);
 mainContainer.appendChild(switcher);
+mainContainer.appendChild(screenTitle);
 ReactDOM.render(r(App), reactContainer);
+// ReactDom.render(r(App), document.getElementById('app'));
