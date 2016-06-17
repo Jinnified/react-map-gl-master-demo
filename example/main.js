@@ -28,6 +28,7 @@ var window = require('global/window');
 var NotInteractiveExample = require('./examples/not-interactive.react');
 var ChoroplethExample = require('./examples/choropleth.react');
 var CustomExample = require('./examples/custom.react');
+const ODSwitch = require('./examples/odswitch');
 var GeodataCreator = require('./examples/geodata-creator.react');
 var ScatterplotExample = require('./examples/scatterplot.react');
 var RouteExample = require('./examples/route.react');
@@ -80,6 +81,16 @@ var App = React.createClass({
   }
 });
 
-var reactContainer = document.createElement('div');
-document.body.appendChild(reactContainer);
+const mainContainer = document.createElement('div');
+const reactContainer = document.createElement('div');
+const switcher = document.createElement('div');
+const switcherDom = '<input type="checkbox" name="my-checkbox" checked />';
+
+switcher.className = 'odswitcher';
+switcher.innerHTML = switcherDom;
+reactContainer.className = 'odmap';
+
+document.body.appendChild(mainContainer);
+mainContainer.appendChild(reactContainer)
+mainContainer.appendChild(switcher);
 ReactDOM.render(r(App), reactContainer);

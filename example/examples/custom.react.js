@@ -86,7 +86,7 @@ const OverlayExample = React.createClass({
     canvasMap.addEventListener('click', (e) => {
       let opt = this.state.opt;
       let amount = 0;
-      let isFromTo = false;
+      let isFromTo = true;
 
       opt.ctx.clearRect(0, 0, opt.width, opt.height);
       // opt.ctx.strokeStyle = alphaify('#1FBAD6', 0.2);
