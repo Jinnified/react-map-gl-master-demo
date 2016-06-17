@@ -86,6 +86,8 @@ const OverlayExample = React.createClass({
     canvasMap.addEventListener('click', (e) => {
       let opt = this.state.opt;
       let amount = 0;
+      let isFromTo = false;
+
       opt.ctx.clearRect(0, 0, opt.width, opt.height);
       // opt.ctx.strokeStyle = alphaify('#1FBAD6', 0.2);
       opt.ctx.strokeStyle = alphaify('#FFA500', 0.5);
@@ -108,16 +110,29 @@ const OverlayExample = React.createClass({
       let oneMileOut = turf.buffer(clickedPoint, 1, 'miles'); //buffer
 
       _.each(locations, (d)=>{
-        let comparator = {
+        let comparatorFrom = {
           'type': 'Feature',
           'geometry': {
               'type': 'Point',
               'coordinates': [d['start_lat'], d['start_lon']]
           },
           'properties': {
-            'name': 'comparator'
+            'name': 'comparatorFrom'
           }
         };
+
+        let comparatorTo = {
+          'type': 'Feature',
+          'geometry': {
+              'type': 'Point',
+              'coordinates': [d['stop_lat'], d['stop_lon']]
+          },
+          'properties': {
+            'name': 'comparatorTo'
+          }
+        };
+
+        let comparator = isFromTo ? comparatorFrom : comparatorTo;
 
         if(turf.inside(comparator, oneMileOut)) {
           // console.log('in d', d);
